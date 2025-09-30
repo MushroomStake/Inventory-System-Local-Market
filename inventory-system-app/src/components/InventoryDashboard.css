@@ -1,0 +1,268 @@
+.inventory-dashboard {
+  min-height: 100vh;
+  padding: 2rem;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 900px;
+  max-width: 900px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.add-product-btn {
+  background: #8b5cf6;
+  color: white;
+  border: none;
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.add-product-btn:hover {
+  background: #7c3aed;
+}
+
+/* New Two-Column Layout */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 280px 600px;
+  gap: 2rem;
+  align-items: start;
+  max-width: 900px;
+  width: fit-content;
+}
+
+/* Stats Sidebar */
+.dashboard-sidebar {
+  position: sticky;
+  top: 2rem;
+}
+
+.stats-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.stat-item:last-child {
+  border-bottom: none;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #8b5cf6;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Main Content Area */
+.dashboard-main {
+  min-height: 500px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .inventory-dashboard {
+    padding: 1rem;
+  }
+  
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .add-product-btn {
+    width: auto;
+    max-width: 200px;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: none;
+  }
+  
+  .dashboard-sidebar {
+    position: static;
+    order: 2;
+  }
+  
+  .dashboard-main {
+    order: 1;
+    min-height: auto;
+  }
+  
+  .stats-card {
+    padding: 1rem;
+  }
+  
+  .stat-item {
+    padding: 0.75rem 0;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .inventory-dashboard {
+    padding: 0.75rem;
+  }
+  
+  .dashboard-header {
+    padding: 0.75rem;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 1.25rem;
+  }
+  
+  .add-product-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    max-width: 180px;
+    width: auto;
+  }
+  
+  .stats-card {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+  }
+}
+
+/* Additional breakpoint for tablets and small laptops */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .dashboard-header {
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .dashboard-layout {
+    max-width: 800px;
+    grid-template-columns: 250px 1fr;
+  }
+}
+
+/* Modal styles for centered add product form */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  margin: auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .inventory-dashboard {
+    padding: 1rem;
+  }
+  
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .modal-overlay {
+    padding: 0.5rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+  
+  .modal-content {
+    padding: 1.5rem;
+    border-radius: 8px;
+    max-height: calc(100vh - 4rem);
+    width: calc(100% - 1rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 1rem;
+    max-height: calc(100vh - 2rem);
+    width: calc(100% - 0.5rem);
+  }
+  
+  .modal-overlay {
+    padding: 0.25rem;
+    padding-top: 1rem;
+  }
+}

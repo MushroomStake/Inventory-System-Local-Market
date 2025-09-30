@@ -25,6 +25,40 @@ model User {
   @@map("users")
 }
 
+// Category model for product classification
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  description String?
+  color       String?   // For UI styling (e.g., "Vegetables", "Dairy & Eggs")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  // Relations
+  products    Product[]
+
+  @@map("categories")
+}
+
+// Product model for inventory items
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  quantity    Int      @default(0)
+  unit        String   // e.g., "kg", "pieces", "liters"
+  price       Decimal? @db.Decimal(10, 2)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  categoryId  Int
+  category    Category @relation(fields: [categoryId], references: [id])
+
+  @@map("products")
+}
+
 // Enum for user roles
 enum UserRole {
   USER
