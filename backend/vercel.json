@@ -1,0 +1,31 @@
+{
+  "builds": [
+    {
+      "src": "inventory-system-app/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "inventory-system-app/dist"
+      }
+    },
+    {
+      "src": "backend/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/backend/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/inventory-system-app/dist/$1"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

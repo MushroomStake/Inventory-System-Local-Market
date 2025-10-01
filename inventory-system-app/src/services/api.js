@@ -1,5 +1,7 @@
 // API service for communicating with the backend
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? '/api'  // Production: same domain
+  : 'http://localhost:3001/api'; // Development: local backend
 
 class ApiService {
   // Helper method for making API requests
