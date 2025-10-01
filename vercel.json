@@ -1,46 +1,10 @@
 {
-  "builds": [
-    {
-      "src": "inventory-system-app/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "inventory-system-app/dist"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/products/([^/]+)",
-      "dest": "/api/products?id=$1"
-    },
-    {
-      "src": "/api/products",
-      "dest": "/api/products"
-    },
-    {
-      "src": "/api/categories/([^/]+)",
-      "dest": "/api/categories?id=$1"
-    },
-    {
-      "src": "/api/categories",
-      "dest": "/api/categories"
-    },
-    {
-      "src": "/api/health",
-      "dest": "/api/index"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/index"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/inventory-system-app/dist/$1"
-    }
-  ],
+  "buildCommand": "cd inventory-system-app && npm run build",
+  "outputDirectory": "inventory-system-app/dist",
+  "installCommand": "cd inventory-system-app && npm install",
   "rewrites": [
     {
-      "source": "/((?!api/).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]

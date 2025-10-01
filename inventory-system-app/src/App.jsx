@@ -44,8 +44,6 @@ function App() {
 
   const addProduct = async (newProduct) => {
     try {
-      console.log('Adding product with data:', newProduct); // Debug log
-      
       let categoryId;
       
       if (newProduct.categoryId === 'custom') {
@@ -80,8 +78,6 @@ function App() {
       if (newProduct.price && parseFloat(newProduct.price) > 0) {
         productData.price = parseFloat(newProduct.price);
       }
-
-      console.log('Sending product data to API:', productData); // Debug log
 
       const createdProduct = await ApiService.createProduct(productData);
       
