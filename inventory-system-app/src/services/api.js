@@ -1,6 +1,6 @@
 // API service for communicating with Supabase
-const SUPABASE_URL = 'https://oqzayxgmcxrtocpuhqji.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9xemF5eGdtY3hydG9jcHVocWppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkzMjQzODEsImV4cCI6MjA3NDkwMDM4MX0.c9P7KYDYuGcUYiQzJ7YdWAmO-VZRPmqBtXv9Z6ZjxSo';
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || 'https://oqzayxgmcxrtocpuhqji.supabase.co';
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9xemF5eGdtY3hydG9jcHVocWppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkzMjQzODEsImV4cCI6MjA3NDkwMDM4MX0.c9P7KYDYuGcUYiQzJ7YdWAmO-VZRPmqBtXv9Z6ZjxSo';
 
 class ApiService {
   // Helper method for making Supabase API requests
