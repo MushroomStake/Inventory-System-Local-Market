@@ -28,7 +28,7 @@ function AddProductForm({ categories, onAddProduct, onCancel }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!formData.name || !formData.quantity || !formData.unit) {
@@ -46,27 +46,34 @@ function AddProductForm({ categories, onAddProduct, onCancel }) {
       return;
     }
 
-    // Prepare the product data
-    const productData = {
-      ...formData,
-      quantity: parseInt(formData.quantity),
-      // Use custom category name if provided, otherwise use selected category
-      category: formData.categoryId === 'custom' ? formData.customCategory.trim() : 
-                categories.find(c => c.id === parseInt(formData.categoryId))?.name
-    };
+    try {
+      // Prepare the product data
+      const productData = {
+        ...formData,
+        quantity: parseInt(formData.quantity),
+        // Use custom category name if provided, otherwise use selected category
+        category: formData.categoryId === 'custom' ? formData.customCategory.trim() : 
+                  categories.find(c => c.id === parseInt(formData.categoryId))?.name
+      };
 
-    onAddProduct(productData);
+      await onAddProduct(productData);
 
-    // Reset form
-    setFormData({
-      name: '',
-      categoryId: '',
-      customCategory: '',
-      description: '',
-      quantity: '',
-      unit: ''
-    });
-    setShowCustomCategory(false);
+      // Reset form only if successful
+      setFormData({
+        name: '',
+        categoryId: '',
+        customCategory: '',
+        description: '',
+        quantity: '',
+        unit: ''
+      });
+      setShowCustomCategory(false);
+      
+      // Close the form after successful addition
+      onCancel();
+    } catch (error) {
+      alert('Failed to add product: ' + error.message);
+    }
   };
 
   const unitOptions = [

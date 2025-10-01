@@ -10,82 +10,69 @@
   box-sizing: border-box;
 }
 
-.dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  width: 900px;
+/* New Dashboard Content Layout */
+.dashboard-content {
+  width: 100%;
   max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.dashboard-header h1 {
-  margin: 0;
+/* Inventory Overview Section */
+.inventory-overview h2 {
+  margin: 0 0 1.5rem 0;
   color: #1f2937;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
-.add-product-btn {
-  background: #8b5cf6;
-  color: white;
-  border: none;
-  padding: 0.875rem 2rem;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  font-size: 0.875rem;
-  white-space: nowrap;
-}
-
-.add-product-btn:hover {
-  background: #7c3aed;
-}
-
-/* New Two-Column Layout */
-.dashboard-layout {
+.stats-grid {
   display: grid;
-  grid-template-columns: 280px 600px;
-  gap: 2rem;
-  align-items: start;
-  max-width: 900px;
-  width: fit-content;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-/* Stats Sidebar */
-.dashboard-sidebar {
-  position: sticky;
-  top: 2rem;
-}
-
-.stats-card {
+.stat-card {
   background: white;
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card.primary {
   border: 1px solid #e5e7eb;
 }
 
-.stat-item {
-  text-align: center;
-  padding: 1rem 0;
-  border-bottom: 1px solid #f3f4f6;
+.stat-card.secondary {
+  border: 1px solid #e5e7eb;
 }
 
-.stat-item:last-child {
-  border-bottom: none;
+.stat-card.tertiary {
+  border: 1px solid #e5e7eb;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .stat-number {
   font-size: 2rem;
   font-weight: 700;
-  color: #8b5cf6;
-  margin-bottom: 0.25rem;
+  color: #1f2937;
+  line-height: 1;
 }
 
 .stat-label {
@@ -94,9 +81,201 @@
   font-weight: 500;
 }
 
-/* Main Content Area */
-.dashboard-main {
-  min-height: 500px;
+.stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+.stat-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.stat-card:hover .stat-icon img {
+  opacity: 1;
+}
+
+/* Search and Filter Section */
+.search-filter-section {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.search-box {
+  position: relative;
+  flex: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: white;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-icon img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  opacity: 0.5;
+}
+
+.filter-box {
+  min-width: 200px;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: white;
+  color: #374151;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.filter-select option {
+  color: #374151;
+  background: white;
+  padding: 0.5rem;
+}
+
+.add-product-btn-secondary {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.add-product-btn-secondary:hover {
+  background: #059669;
+}
+
+/* Product List Section */
+.product-list-section {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .inventory-dashboard {
+    padding: 1rem;
+  }
+  
+  .dashboard-content {
+    max-width: none;
+    width: 100%;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .search-filter-section {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .filter-box {
+    min-width: auto;
+  }
+  
+  .inventory-overview h2 {
+    font-size: 1.25rem;
+  }
+  
+  .stat-card {
+    padding: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .inventory-dashboard {
+    padding: 0.75rem;
+  }
+  
+  .add-product-btn-secondary {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.8rem;
+  }
+  
+  .stat-card {
+    padding: 0.75rem;
+  }
+  
+  .stat-number {
+    font-size: 1.25rem;
+  }
+  
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .stat-icon img {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 /* Responsive Design */
@@ -178,19 +357,6 @@
   .stats-card {
     margin-bottom: 1rem;
     padding: 0.75rem;
-  }
-}
-
-/* Additional breakpoint for tablets and small laptops */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .dashboard-header {
-    width: 100%;
-    max-width: 800px;
-  }
-  
-  .dashboard-layout {
-    max-width: 800px;
-    grid-template-columns: 250px 1fr;
   }
 }
 

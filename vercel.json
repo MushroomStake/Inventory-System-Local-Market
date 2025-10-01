@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "buildCommand": "cd inventory-system-app && npm run build",
+  "outputDirectory": "inventory-system-app/dist",
+  "installCommand": "cd inventory-system-app && npm install"
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProductList.css';
 
-function ProductList({ products }) {
+function ProductList({ products, onEditProduct }) {
   if (products.length === 0) {
     return (
       <div className="product-list-empty">
@@ -12,11 +12,15 @@ function ProductList({ products }) {
 
   return (
     <div className="product-list">
+      <div className="product-list-header">
+        <h3>Product List</h3>
+      </div>
       <div className="product-table">
         <div className="table-header">
           <div className="header-cell">Product Name</div>
           <div className="header-cell">Category</div>
           <div className="header-cell">Quantity</div>
+          <div className="header-cell">Actions</div>
         </div>
 
         <div className="table-body">
@@ -34,6 +38,16 @@ function ProductList({ products }) {
               
               <div className="table-cell quantity">
                 <span>{product.quantity} {product.unit}</span>
+              </div>
+
+              <div className="table-cell actions">
+                <button 
+                  className="action-btn update-btn"
+                  onClick={() => onEditProduct(product)}
+                  title="Update product"
+                >
+                  Update →
+                </button>
               </div>
             </div>
           ))}
