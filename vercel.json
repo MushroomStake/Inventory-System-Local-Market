@@ -1,11 +1,18 @@
 {
-  "buildCommand": "cd inventory-system-app && npm run build",
-  "outputDirectory": "inventory-system-app/dist",
-  "installCommand": "cd inventory-system-app && npm install",
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "inventory-system-app/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/inventory-system-app/dist/$1"
     }
   ]
 }
