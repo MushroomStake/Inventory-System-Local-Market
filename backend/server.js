@@ -21,7 +21,7 @@ export const prisma = new PrismaClient({
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: true, // Allow all origins in production, Vercel will handle CORS
   credentials: true
 }));
 app.use(express.json());
@@ -63,11 +63,14 @@ app.use('*', (req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📊 API endpoints available at http://localhost:${PORT}/api`);
-});
+// For Vercel, export the app instead of listening
+if (process.env.NODE_ENV !== 'production') {
+  // Start server only in development
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`📊 API endpoints available at http://localhost:${PORT}/api`);
+  });
+}
 
 // Graceful shutdown
 process.on('SIGINT', async () => {
