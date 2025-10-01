@@ -3,6 +3,8 @@ const API_BASE_URL = process.env.NODE_ENV === 'production'
   ? '/api'  // Production: same domain
   : 'http://localhost:3001/api'; // Development: local backend
 
+console.log('API_BASE_URL:', API_BASE_URL); // Debug log
+
 class ApiService {
   // Helper method for making API requests
   async request(endpoint, options = {}) {

@@ -1,4 +1,8 @@
 // API entry point for Vercel
-import app from '../backend/server.js';
-
-export default app;
+export default function handler(req, res) {
+  res.status(200).json({ 
+    message: 'Inventory API is running on Vercel',
+    timestamp: new Date().toISOString(),
+    status: 'OK'
+  });
+}
