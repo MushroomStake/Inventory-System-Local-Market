@@ -198,8 +198,10 @@
   white-space: nowrap;
 }
 
-.add-product-btn-secondary:hover {
-  background: #059669;
+.add-product-btn-secondary:focus,
+.add-product-btn-secondary:focus-visible {
+  outline: 2px solid #059669;
+  outline-offset: 2px;
 }
 
 /* Product List Section */
