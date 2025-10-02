@@ -4,8 +4,12 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Default to light-friendly values */
+  --input-bg: #ffffff;
+  --input-fg: #111827; /* gray-900 */
+  --placeholder-fg: #6b7280; /* gray-500 */
+  color: #213547;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -55,15 +59,41 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
+/* Force readable inputs regardless of browser dark mode */
+.force-light-input {
+  color-scheme: light; /* opt out of auto darkening */
+  background: #ffffff !important;
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important; /* Safari/Chrome webkit */
+  caret-color: #111827;
+  border: 1px solid #e5e7eb;
+}
+
+.force-light-input::placeholder {
+  color: #6b7280 !important;
+  opacity: 1;
+}
+
+/* Input placeholders across the app */
+input::placeholder,
+textarea::placeholder {
+  color: var(--placeholder-fg);
+  opacity: 1; /* iOS Safari */
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --input-bg: #111827; /* gray-900 */
+    --input-fg: #f3f4f6; /* gray-100 */
+    --placeholder-fg: #9ca3af; /* gray-400 */
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
   }
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #1f2937;
   }
 }

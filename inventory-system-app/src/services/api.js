@@ -45,7 +45,6 @@ class ApiService {
     return products.map(product => ({
       id: product.id,
       name: product.name,
-      description: product.description,
       quantity: product.quantity,
       unit: product.unit,
       price: product.price,
@@ -68,7 +67,6 @@ class ApiService {
     return {
       id: product.id,
       name: product.name,
-      description: product.description,
       quantity: product.quantity,
       unit: product.unit,
       price: product.price,
@@ -83,7 +81,6 @@ class ApiService {
   async createProduct(productData) {
     const supabaseData = {
       name: productData.name,
-      description: productData.description || null,
       quantity: productData.quantity,
       unit: productData.unit,
       price: productData.price || null,
@@ -105,7 +102,6 @@ class ApiService {
   async updateProduct(id, productData) {
     const supabaseData = {
       name: productData.name,
-      description: productData.description || null,
       quantity: productData.quantity,
       unit: productData.unit,
       category_id: productData.categoryId
@@ -140,7 +136,6 @@ class ApiService {
     return categories.map(category => ({
       id: category.id,
       name: category.name,
-      description: category.description,
       color: category.color || '#6B7280',
       createdAt: category.created_at,
       updatedAt: category.updated_at
@@ -158,7 +153,6 @@ class ApiService {
     return {
       id: category.id,
       name: category.name,
-      description: category.description,
       color: category.color || '#6B7280',
       createdAt: category.created_at,
       updatedAt: category.updated_at
@@ -168,7 +162,6 @@ class ApiService {
   async createCategory(categoryData) {
     const supabaseData = {
       name: categoryData.name,
-      description: categoryData.description || null,
       color: categoryData.color || '#6B7280'
     };
 
@@ -181,7 +174,6 @@ class ApiService {
     return {
       id: category.id,
       name: category.name,
-      description: category.description,
       color: category.color,
       createdAt: category.created_at,
       updatedAt: category.updated_at

@@ -69,7 +69,7 @@
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: #9ca3af;
+  color: var(--placeholder-fg);
 }
 
 .form-group textarea {

@@ -68,7 +68,6 @@ function App() {
       // Create product with API
       const productData = {
         name: newProduct.name,
-        description: newProduct.description || '',
         quantity: parseInt(newProduct.quantity),
         unit: newProduct.unit,
         categoryId: categoryId
@@ -98,7 +97,6 @@ function App() {
       // Prepare data for API
       const updateData = {
         name: updatedData.name,
-        description: updatedData.description || '',
         quantity: parseInt(updatedData.quantity),
         unit: updatedData.unit,
         categoryId: parseInt(updatedData.categoryId)

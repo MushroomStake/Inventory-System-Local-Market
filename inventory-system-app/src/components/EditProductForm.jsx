@@ -4,7 +4,6 @@ import './EditProductForm.css';
 function EditProductForm({ product, categories, onUpdateProduct, onDeleteProduct, onClose }) {
   const [formData, setFormData] = useState({
     name: '',
-    description: '',
     quantity: '',
     unit: 'kg',
     categoryId: '',
@@ -16,7 +15,6 @@ function EditProductForm({ product, categories, onUpdateProduct, onDeleteProduct
     if (product) {
       setFormData({
         name: product.name || '',
-        description: product.description || '',
         quantity: product.quantity || '',
         unit: product.unit || 'kg',
         categoryId: product.categoryId === 'custom' ? 'custom' : product.categoryId.toString(),
@@ -49,7 +47,6 @@ function EditProductForm({ product, categories, onUpdateProduct, onDeleteProduct
     try {
       const updatedProduct = {
         name: formData.name.trim(),
-        description: formData.description.trim(),
         quantity: parseInt(formData.quantity),
         unit: formData.unit,
         categoryId: formData.categoryId === 'custom' ? 'custom' : parseInt(formData.categoryId),
@@ -168,17 +165,7 @@ function EditProductForm({ product, categories, onUpdateProduct, onDeleteProduct
             </div>
           )}
 
-          <div className="form-group">
-            <label htmlFor="description">Description</label>
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              placeholder="Optional product description"
-              rows="3"
-            />
-          </div>
+          {/* Description removed as per requirement */}
 
           <div className="form-actions">
             <button type="button" className="delete-btn" onClick={handleDelete}>

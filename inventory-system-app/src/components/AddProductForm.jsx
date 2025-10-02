@@ -6,7 +6,6 @@ function AddProductForm({ categories, onAddProduct, onCancel }) {
     name: '',
     categoryId: '',
     customCategory: '',
-    description: '',
     quantity: '',
     unit: ''
   });
@@ -49,7 +48,9 @@ function AddProductForm({ categories, onAddProduct, onCancel }) {
     try {
       // Prepare the product data
       const productData = {
-        ...formData,
+        name: formData.name,
+        categoryId: formData.categoryId,
+        customCategory: formData.customCategory,
         quantity: parseInt(formData.quantity),
         // Use custom category name if provided, otherwise use selected category
         category: formData.categoryId === 'custom' ? formData.customCategory.trim() : 
@@ -63,7 +64,6 @@ function AddProductForm({ categories, onAddProduct, onCancel }) {
         name: '',
         categoryId: '',
         customCategory: '',
-        description: '',
         quantity: '',
         unit: ''
       });
@@ -134,18 +134,6 @@ function AddProductForm({ categories, onAddProduct, onCancel }) {
             />
           </div>
         )}
-
-        <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            placeholder="A brief description of the product, including its origin, taste, and uses."
-            rows="3"
-          />
-        </div>
 
         <div className="form-row">
           <div className="form-group">

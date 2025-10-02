@@ -81,7 +81,7 @@ function InventoryDashboard({ products, categories, onAddProduct, onUpdateProduc
               placeholder="Search products..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="search-input"
+              className="search-input force-light-input"
             />
             <span className="search-icon">
               <img src={searchIcon} alt="Search" />
