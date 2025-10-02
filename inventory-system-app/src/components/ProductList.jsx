@@ -18,6 +18,7 @@ function ProductList({ products, onEditProduct }) {
       <div className="product-table">
         <div className="table-header">
           <div className="header-cell">Product Name</div>
+          <div className="header-cell">Unit</div>
           <div className="header-cell">Category</div>
           <div className="header-cell">Quantity</div>
           <div className="header-cell">Actions</div>
@@ -29,6 +30,10 @@ function ProductList({ products, onEditProduct }) {
               <div className="table-cell product-name">
                 {product.name}
               </div>
+
+              <div className="table-cell unit">
+                {product.unit}
+              </div>
               
               <div className="table-cell category">
                 <span className="category-text">
@@ -37,7 +42,7 @@ function ProductList({ products, onEditProduct }) {
               </div>
               
               <div className="table-cell quantity">
-                <span>{product.quantity} {product.unit}</span>
+                <span>{product.quantity}</span>
               </div>
 
               <div className="table-cell actions">
