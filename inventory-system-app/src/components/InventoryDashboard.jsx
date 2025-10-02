@@ -95,8 +95,8 @@ function InventoryDashboard({ products, categories, onAddProduct, onUpdateProduc
               className="filter-select"
             >
               <option value="">Filter by Category</option>
-              {[...new Set(products.map(p => p.category))].map(category => (
-                <option key={category} value={category}>{category}</option>
+              {categories.map(category => (
+                <option key={category.id} value={category.name}>{category.name}</option>
               ))}
             </select>
           </div>

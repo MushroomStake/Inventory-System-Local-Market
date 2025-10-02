@@ -59,12 +59,12 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Force readable inputs regardless of browser dark mode */
+/* Force visible text on inputs regardless of browser/OS dark mode */
 .force-light-input {
-  color-scheme: light; /* opt out of auto darkening */
+  color-scheme: light;
   background: #ffffff !important;
   color: #111827 !important;
-  -webkit-text-fill-color: #111827 !important; /* Safari/Chrome webkit */
+  -webkit-text-fill-color: #111827 !important;
   caret-color: #111827;
   border: 1px solid #e5e7eb;
 }
@@ -72,6 +72,11 @@ button:focus-visible {
 .force-light-input::placeholder {
   color: #6b7280 !important;
   opacity: 1;
+}
+
+.force-light-input:focus {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
 }
 
 /* Input placeholders across the app */
