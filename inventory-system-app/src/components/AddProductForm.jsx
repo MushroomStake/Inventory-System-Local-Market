@@ -52,6 +52,7 @@ function AddProductForm({ categories, onAddProduct, onCancel }) {
         categoryId: formData.categoryId,
         customCategory: formData.customCategory,
         quantity: parseInt(formData.quantity),
+        unit: formData.unit,
         // Use custom category name if provided, otherwise use selected category
         category: formData.categoryId === 'custom' ? formData.customCategory.trim() : 
                   categories.find(c => c.id === parseInt(formData.categoryId))?.name
